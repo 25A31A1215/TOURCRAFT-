@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="TourCraft - Smart travel planning and trip discovery"
+    >
+
+    <title>TourCraft - Travel Smarter</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="toast" class="toast"></div>
+
+<!-- =========================
+     LOGIN SCREEN
+========================= -->
+
+<section id="loginScreen" class="auth-screen">
+
+    <div class="auth-card">
+
+        <div class="brand-large">
+            <div class="brand-icon">✈</div>
+            <div>
+                <h1>TourCraft</h1>
+                <p>Travel smarter. Explore more.</p>
+            </div>
+        </div>
+
+        <div class="auth-content">
+
+            <h2>Welcome back</h2>
+            <p class="muted">
+                Sign in to continue your travel journey.
+            </p>
+
+            <form id="loginForm">
+
+                <label for="loginEmail">Email</label>
+                <input
+                    id="loginEmail"
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label for="loginPassword">Password</label>
+
+                <div class="password-wrapper">
+                    <input
+                        id="loginPassword"
+                        type="password"
+                        placeholder="Enter your password"
+                        minlength="6"
+                        required
+                    >
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-target="loginPassword"
+                        aria-label="Show password"
+                    >👁</button>
+                </div>
+
+                <div class="auth-row">
+                    <button
+                        type="button"
+                        class="text-button"
+                        id="forgotPasswordBtn"
+                    >
+                        Forgot password?
+                    </button>
+                </div>
+
+                <button type="submit" class="primary-btn full-btn">
+                    Login
+                </button>
+
+            </form>
+
+            <div class="divider">
+                <span>or</span>
+            </div>
+
+            <button
+                type="button"
+                class="secondary-btn full-btn"
+                id="createAccountBtn"
+            >
+                Create an account
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MAIN APP
+========================= -->
+
+<div id="app" class="app hidden">
+
+    <!-- DESKTOP HEADER -->
+
+    <header class="desktop-header">
+
+        <button class="logo-button" data-page="home">
+
+            <span class="brand-icon small">✈</span>
+
+            <span>
+                <strong>TourCraft</strong>
+                <small>Travel smarter</small>
+            </span>
+
+        </button>
+
+        <nav class="desktop-nav">
+
+            <button data-page="home" class="nav-link active">
+                Home
+            </button>
+
+            <button data-page="explore" class="nav-link">
+                Explore
+            </button>
+
+            <button data-page="inspire" class="nav-link">
+                Inspire
+            </button>
+
+            <button data-page="plan" class="nav-link">
+                Plan Trip
+            </button>
+
+            <button data-page="trips" class="nav-link">
+                My Trips
+            </button>
+
+            <button data-page="bookings" class="nav-link">
+                Bookings
+            </button>
+
+        </nav>
+
+        <button
+            class="profile-header-btn"
+            data-page="profile"
+        >
+            <span id="headerAvatar">A</span>
+            <span id="headerUserName">Traveler</span>
+        </button>
+
+    </header>
+
+
+    <!-- MOBILE HEADER -->
+
+    <header class="mobile-header">
+
+        <button
+            id="mobileBackBtn"
+            class="icon-button hidden"
+            aria-label="Go back"
+        >
+            ←
+        </button>
+
+        <div class="mobile-brand">
+            <span class="brand-icon small">✈</span>
+            <strong>TourCraft</strong>
+        </div>
+
+        <button
+            class="icon-button"
+            data-page="profile"
+            aria-label="Profile"
+        >
+            👤
+        </button>
+
+    </header>
+
+
+    <!-- PAGE CONTAINER -->
+
+    <main class="page-container">
+
+
+        <!-- =========================
+             HOME
+        ========================= -->
+
+        <section
+            id="homePage"
+            class="page active-page"
+            data-page-section="home"
+        >
+
+            <div class="page-topbar">
+
+                <div>
+                    <span class="eyebrow">GOOD TO SEE YOU</span>
+
+                    <h1>
+                        Where will you go next,
+                        <span id="homeUserName">Traveler</span>?
+                    </h1>
+
+                    <p>
+                        Discover beautiful places and create your perfect trip.
+                    </p>
+                </div>
+
+                <button
+                    class="back-btn hidden"
+                    data-back
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div class="hero-card">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        ✨ PLAN YOUR NEXT ADVENTURE
+                    </span>
+
+                    <h2>
+                        Your journey starts here.
+                    </h2>
+
+                    <p>
+                        Find inspiring destinations, build an itinerary,
+                        and keep everything organised in one place.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <button
+                            class="primary-btn"
+                            data-page="inspire"
+                        >
+                            Start Exploring
+                        </button>
+
+                        <button
+                            class="light-btn"
+                            data-page="plan"
+                        >
+                            Plan a Trip
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-decoration">
+                    🌴
+                    <span>✈️</span>
+                    🏔️
+                </div>
+
+            </div>
+
+
+            <div class="section-header">
+
+                <div>
+                    <span class="eyebrow">POPULAR</span>
+                    <h2>Popular destinations</h2>
+                </div>
+
+                <button
+                    class="text-button"
+                    data-page="explore"
+                >
+                    View all →
+                </button>
+
+            </div>
+
+
+            <div
+                id="homePopularGrid"
+                class="destination-grid"
+            ></div>
+
+
+            <div class="section-header">
+
+                <div>
+                    <span class="eyebrow">FOR YOU</span>
+                    <h2>Recommended for you</h2>
+                </div>
+
+            </div>
+
+
+            <div
+                id="recommendationGrid"
+                class="destination-grid"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =========================
+             EXPLORE
+        ========================= -->
+
+        <section
+            id="explorePage"
+            class="page"
+            data-page-section="explore"
+        >
+
+            <div class="page-topbar">
+
+                <div>
+                    <span class="eyebrow">DISCOVER</span>
+                    <h1>Explore destinations</h1>
+                    <p>
+                        Search and discover your next favourite place.
+                    </p>
+                </div>
+
+                <button
+                    class="back-btn"
+                    data-back
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div class="search-panel">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        id="destinationSearch"
+                        type="search"
+                        placeholder="Search cities, states or places..."
+                    >
+
+                </div>
+
+
+                <select id="regionFilter">
+                    <option value="all">All regions</option>
+                    <option value="north">North India</option>
+                    <option value="south">South India</option>
+                    <option value="west">West India</option>
+                    <option value="east">East India</option>
+                    <option value="central">Central India</option>
+                </select>
+
+
+                <select id="budgetFilter">
+                    <option value="all">Any budget</option>
+                    <option value="budget">Budget</option>
+                    <option value="medium">Medium</option>
+                    <option value="premium">Premium</option>
+                </select>
+
+            </div>
+
+
+            <div class="interest-row">
+
+                <button
+                    class="interest-chip active"
+                    data-interest="all"
+                >
+                    All
+                </button>
+
+                <button
+                    class="interest-chip"
+                    data-interest="beach"
+                >
+                    🏖 Beach
+                </button>
+
+                <button
+                    class="interest-chip"
+                    data-interest="mountains"
+                >
+                    🏔 Mountains
+                </button>
+
+                <button
+                    class="interest-chip"
+                    data-interest="culture"
+                >
+                    🏛 Culture
+                </button>
+
+                <button
+                    class="interest-chip"
+                    data-interest="nature"
+                >
+                    🌿 Nature
+                </button>
+
+                <button
+                    class="interest-chip"
+                    data-interest="food"
+                >
+                    🍛 Food
+                </button>
+
+                <button
+                    class="interest-chip"
+                    data-interest="adventure"
+                >
+                    🧗 Adventure
+                </button>
+
+            </div>
+
+
+            <div
+                id="exploreGrid"
+                class="destination-grid large-grid"
+            ></div>
+
+
+            <div
+                id="noResults"
+                class="empty-state hidden"
+            >
+                <div class="empty-icon">🔎</div>
+                <h3>No destinations found</h3>
+                <p>
+                    Try another city, region or interest.
+                </p>
+
+                <button
+                    class="secondary-btn"
+                    id="clearFiltersBtn"
+                >
+                    Clear filters
+                </button>
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             INSPIRE
+        ========================= -->
+
+        <section
+            id="inspirePage"
+            class="page"
+            data-page-section="inspire"
+        >
+
+            <div class="page-topbar">
+
+                <div>
+                    <span class="eyebrow">GET INSPIRED</span>
+
+                    <h1>How do you want to travel?</h1>
+
+                    <p>
+                        Tell us what you need and we'll help you find the right destination.
+                    </p>
+                </div>
+
+                <button
+                    class="back-btn"
+                    data-back
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div class="inspire-choice-grid">
+
+                <button
+                    class="inspire-choice"
+                    id="inspireMeBtn"
+                >
+
+                    <div class="choice-icon orange">
+                        ✨
+                    </div>
+
+                    <div>
+                        <h2>Inspire Me</h2>
+
+                        <p>
+                            I don't know where to go.
+                            Surprise me with destinations based on my interests.
+                        </p>
+                    </div>
+
+                    <span class="choice-arrow">→</span>
+
+                </button>
+
+
+                <button
+                    class="inspire-choice"
+                    id="knowWhereBtn"
+                >
+
+                    <div class="choice-icon green">
+                        🧭
+                    </div>
+
+                    <div>
+                        <h2>I Know Where to Go</h2>
+
+                        <p>
+                            I already have a destination in mind.
+                            Help me plan the perfect trip.
+                        </p>
+                    </div>
+
+                    <span class="choice-arrow">→</span>
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="inspireFormArea"
+                class="inspire-form-area hidden"
+            >
+
+                <div class="form-card">
+
+                    <div class="form-card-header">
+
+                        <div>
+                            <span class="eyebrow">
+                                INSPIRE ME
+                            </span>
+
+                            <h2>Let's find a place for you</h2>
+                        </div>
+
+                        <button
+                            class="icon-button close-form"
+                            id="closeInspireForm"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="field">
+
+                            <label for="inspireMood">
+                                What are you looking for?
+                            </label>
+
+                            <select id="inspireMood">
+
+                                <option value="nature">
+                                    Nature & peaceful places
+                                </option>
+
+                                <option value="beach">
+                                    Beach & relaxation
+                                </option>
+
+                                <option value="mountains">
+                                    Mountains & adventure
+                                </option>
+
+                                <option value="culture">
+                                    Culture & history
+                                </option>
+
+                                <option value="food">
+                                    Food & city life
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="inspireBudget">
+                                Budget
+                            </label>
+
+                            <select id="inspireBudget">
+
+                                <option value="budget">
+                                    Budget friendly
+                                </option>
+
+                                <option value="medium">
+                                    Comfortable
+                                </option>
+
+                                <option value="premium">
+                                    Premium
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="inspireDays">
+                                Days
+                            </label>
+
+                            <input
+                                id="inspireDays"
+                                type="number"
+                                min="1"
+                                max="30"
+                                value="4"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="primary-btn"
+                        id="generateInspirationBtn"
+                    >
+                        Find My Destination ✨
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="inspirationResult"
+                    class="inspiration-result hidden"
+                ></div>
+
+            </div>
+
+
+            <div
+                id="knowWhereArea"
+                class="inspire-form-area hidden"
+            >
+
+                <div class="form-card">
+
+                    <div class="form-card-header">
+
+                        <div>
+                            <span class="eyebrow">
+                                I KNOW WHERE TO GO
+                            </span>
+
+                            <h2>Choose your destination</h2>
+                        </div>
+
+                        <button
+                            class="icon-button close-form"
+                            id="closeKnowWhere"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="knownDestination">
+                            Destination
+                        </label>
+
+                        <select id="knownDestination"></select>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="field">
+
+                            <label for="knownDays">
+                                Number of days
+                            </label>
+
+                            <input
+                                id="knownDays"
+                                type="number"
+                                min="1"
+                                max="30"
+                                value="4"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="knownTravelers">
+                                Travelers
+                            </label>
+
+                            <input
+                                id="knownTravelers"
+                                type="number"
+                                min="1"
+                                max="20"
+                                value="2"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="primary-btn"
+                        id="continueKnownDestinationBtn"
+                    >
+                        Continue to Plan →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PLAN
+        ========================= -->
+
+        <section
+            id="planPage"
+            class="page"
+            data-page-section="plan"
+        >
+
+            <div class="page-topbar">
+
+                <div>
+                    <span class="eyebrow">PLAN</span>
+                    <h1>Plan your perfect trip</h1>
+                    <p>
+                        Build an itinerary in seconds.
+                    </p>
+                </div>
+
+                <button
+                    class="back-btn"
+                    data-back
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div class="form-card plan-card">
+
+                <form id="planForm">
+
+                    <div class="form-grid">
+
+                        <div class="field">
+
+                            <label for="planDestination">
+                                Destination
+                            </label>
+
+                            <select
+                                id="planDestination"
+                                required
+                            ></select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="planDays">
+                                Number of days
+                            </label>
+
+                            <input
+                                id="planDays"
+                                type="number"
+                                min="1"
+                                max="14"
+                                value="4"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="planTravelers">
+                                Travelers
+                            </label>
+
+                            <input
+                                id="planTravelers"
+                                type="number"
+                                min="1"
+                                max="20"
+                                value="2"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="planBudget">
+                                Budget
+                            </label>
+
+                            <select id="planBudget">
+
+                                <option value="budget">
+                                    Budget
+                                </option>
+
+                                <option value="medium" selected>
+                                    Comfortable
+                                </option>
+
+                                <option value="premium">
+                                    Premium
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="planTransport">
+                                Transport
+                            </label>
+
+                            <select id="planTransport">
+
+                                <option value="flight">
+                                    Flight
+                                </option>
+
+                                <option value="train" selected>
+                                    Train
+                                </option>
+
+                                <option value="bus">
+                                    Bus
+                                </option>
+
+                                <option value="car">
+                                    Car
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="planStartDate">
+                                Start date
+                            </label>
+
+                            <input
+                                id="planStartDate"
+                                type="date"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Interests
+                        </label>
+
+                        <div class="selectable-interests">
+
+                            <label class="selectable">
+                                <input
+                                    type="checkbox"
+                                    value="nature"
+                                    checked
+                                >
+                                Nature
+                            </label>
+
+                            <label class="selectable">
+                                <input
+                                    type="checkbox"
+                                    value="food"
+                                >
+                                Food
+                            </label>
+
+                            <label class="selectable">
+                                <input
+                                    type="checkbox"
+                                    value="culture"
+                                >
+                                Culture
+                            </label>
+
+                            <label class="selectable">
+                                <input
+                                    type="checkbox"
+                                    value="adventure"
+                                >
+                                Adventure
+                            </label>
+
+                            <label class="selectable">
+                                <input
+                                    type="checkbox"
+                                    value="shopping"
+                                >
+                                Shopping
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Create My Itinerary ✨
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             TRIPS
+        ========================= -->
+
+        <section
+            id="tripsPage"
+            class="page"
+            data-page-section="trips"
+        >
+
+            <div class="page-topbar">
+
+                <div>
+                    <span class="eyebrow">YOUR JOURNEYS</span>
+                    <h1>My Trips</h1>
+                    <p>
+                        Your saved travel plans in one place.
+                    </p>
+                </div>
+
+                <button
+                    class="back-btn"
+                    data-back
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div id="tripsList"></div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ACTIVE TRIP
+        ========================= -->
+
+        <section
+            id="activeTripPage"
+            class="page"
+            data-page-section="active-trip"
+        >
+
+            <div class="page-topbar">
+
+                <div>
+                    <span class="eyebrow">ACTIVE JOURNEY</span>
+                    <h1 id="activeTripTitle">
+                        Your Trip
+                    </h1>
+                    <p id="activeTripSubtitle">
+                        Your itinerary
+                    </p>
+                </div>
+
+                <button
+                    class="back-btn"
+                    data-back
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div
+                id="activeTripSummary"
+                class="trip-summary-card"
+            ></div>
+
+
+            <div class="active-trip-actions">
+
+                <button
+                    class="primary-btn"
+                    id="startTripBtn"
+                >
+                    ▶ Start Trip
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    id="nextStopBtn"
+                >
+                    Next Stop →
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    id="navigateStopBtn"
+                >
+                    🧭 Navigate
+                </button>
+
+            </div>
+
+
+            <div
+                id="activeItinerary"
+                class="itinerary"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =========================
+             BOOKINGS
+        ========================= -->
+
+        <section
+            id="bookingsPage"
+            class="page"
+            data-page-section="bookings"
+        >
+
+            <div class="page-topbar">
+
+                <div>
+                    <span class="eyebrow">BOOK</span>
+                    <h1>Bookings</h1>
+                    <p>
+                        Find transport and stays for your journey.
+                    </p>
+                </div>
+
+                <button
+                    class="back-btn"
+                    data-back
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div class="booking-grid">
+
+                <article class="booking-card">
+
+                    <div class="booking-icon">✈️</div>
+
+                    <div>
+                        <h2>Flights</h2>
+                        <p>
+                            Search flights for your destination.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        data-booking="flight"
+                    >
+                        Search Flights
+                    </button>
+
+                </article>
+
+
+                <article class="booking-card">
+
+                    <div class="booking-icon">🏨</div>
+
+                    <div>
+                        <h2>Hotels</h2>
+                        <p>
+                            Find hotels and stays.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        data-booking="hotel"
+                    >
+                        Search Hotels
+                    </button>
+
+                </article>
+
+
+                <article class="booking-card">
+
+                    <div class="booking-icon">🚆</div>
+
+                    <div>
+                        <h2>Trains</h2>
+                        <p>
+                            Search train options.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        data-booking="train"
+                    >
+                        Search Trains
+                    </button>
+
+                </article>
+
+
+                <article class="booking-card">
+
+                    <div class="booking-icon">🚌</div>
+
+                    <div>
+                        <h2>Buses</h2>
+                        <p>
+                            Search intercity bus routes.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        data-booking="bus"
+                    >
+                        Search Buses
+                    </button>
+
+                </article>
+
+            </div>
+
+
+            <div class="info-banner">
+
+                <span>💡</span>
+
+                <div>
+                    <strong>Booking tip</strong>
+
+                    <p>
+                        TourCraft helps you plan your journey.
+                        Booking providers may open in a new browser tab.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PROFILE
+        ========================= -->
+
+        <section
+            id="profilePage"
+            class="page"
+            data-page-section="profile"
+        >
+
+            <div class="page-topbar">
+
+                <div>
+                    <span class="eyebrow">ACCOUNT</span>
+                    <h1>My Profile</h1>
+                    <p>
+                        Manage your travel preferences.
+                    </p>
+                </div>
+
+                <button
+                    class="back-btn"
+                    data-back
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div class="profile-layout">
+
+                <div class="profile-card">
+
+                    <div class="profile-avatar" id="profileAvatar">
+                        A
+                    </div>
+
+                    <h2 id="profileDisplayName">
+                        Traveler
+                    </h2>
+
+                    <p id="profileDisplayEmail">
+                        traveler@example.com
+                    </p>
+
+                    <span class="profile-badge">
+                        ✈ Travel Explorer
+                    </span>
+
+                </div>
+
+
+                <div class="form-card profile-form-card">
+
+                    <h2>Personal details</h2>
+
+                    <p class="muted">
+                        Update your information and preferences.
+                    </p>
+
+
+                    <form id="profileForm">
+
+                        <div class="form-grid">
+
+                            <div class="field">
+
+                                <label for="profileName">
+                                    Full name
+                                </label>
+
+                                <input
+                                    id="profileName"
+                                    type="text"
+                                    placeholder="Your full name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="profileEmail">
+                                    Email
+                                </label>
+
+                                <input
+                                    id="profileEmail"
+                                    type="email"
+                                    placeholder="Your email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="profilePhone">
+                                    Phone
+                                </label>
+
+                                <input
+                                    id="profilePhone"
+                                    type="tel"
+                                    placeholder="+91 9876543210"
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="profileRegion">
+                                    Travel region
+                                </label>
+
+                                <select id="profileRegion">
+
+                                    <option value="India">
+                                        India
+                                    </option>
+
+                                    <option value="Asia">
+                                        Asia
+                                    </option>
+
+                                    <option value="Europe">
+                                        Europe
+                                    </option>
+
+                                    <option value="North America">
+                                        North America
+                                    </option>
+
+                                    <option value="Australia">
+                                        Australia
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="profileCurrency">
+                                    Default currency
+                                </label>
+
+                                <select id="profileCurrency">
+
+                                    <option value="INR">
+                                        INR - Indian Rupee
+                                    </option>
+
+                                    <option value="USD">
+                                        USD - US Dollar
+                                    </option>
+
+                                    <option value="EUR">
+                                        EUR - Euro
+                                    </option>
+
+                                    <option value="GBP">
+                                        GBP - British Pound
+                                    </option>
+
+                                    <option value="AUD">
+                                        AUD - Australian Dollar
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="profileLanguage">
+                                    Language
+                                </label>
+
+                                <select id="profileLanguage">
+
+                                    <option value="English">
+                                        English
+                                    </option>
+
+                                    <option value="Telugu">
+                                        Telugu
+                                    </option>
+
+                                    <option value="Hindi">
+                                        Hindi
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>
+                                Favourite travel styles
+                            </label>
+
+                            <div class="selectable-interests">
+
+                                <label class="selectable">
+                                    <input
+                                        type="checkbox"
+                                        value="beach"
+                                        id="profileBeach"
+                                    >
+                                    Beach
+                                </label>
+
+                                <label class="selectable">
+                                    <input
+                                        type="checkbox"
+                                        value="mountains"
+                                        id="profileMountains"
+                                    >
+                                    Mountains
+                                </label>
+
+                                <label class="selectable">
+                                    <input
+                                        type="checkbox"
+                                        value="nature"
+                                        id="profileNature"
+                                    >
+                                    Nature
+                                </label>
+
+                                <label class="selectable">
+                                    <input
+                                        type="checkbox"
+                                        value="culture"
+                                        id="profileCulture"
+                                    >
+                                    Culture
+                                </label>
+
+                                <label class="selectable">
+                                    <input
+                                        type="checkbox"
+                                        value="food"
+                                        id="profileFood"
+                                    >
+                                    Food
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- VISIBLE SAVE PROFILE BUTTON -->
+
+                        <div class="profile-save-area">
+
+                            <button
+                                type="submit"
+                                class="primary-btn save-profile-btn"
+                            >
+                                ✓ Save Profile
+                            </button>
+
+                            <button
+                                type="button"
+                                class="secondary-btn"
+                                id="resetProfileBtn"
+                            >
+                                Reset
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-danger">
+
+                <div>
+                    <h3>Account</h3>
+                    <p>
+                        Sign out from this device.
+                    </p>
+                </div>
+
+                <button
+                    class="danger-btn"
+                    id="logoutBtn"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             EMERGENCY
+        ========================= -->
+
+        <section
+            id="emergencyPage"
+            class="page"
+            data-page-section="emergency"
+        >
+
+            <div class="page-topbar">
+
+                <div>
+                    <span class="eyebrow">SAFETY</span>
+                    <h1>Emergency Help</h1>
+                    <p>
+                        Quick access to emergency and location tools.
+                    </p>
+                </div>
+
+                <button
+                    class="back-btn"
+                    data-back
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div class="emergency-warning">
+
+                <span>⚠️</span>
+
+                <div>
+                    <strong>
+                        If you are in immediate danger
+                    </strong>
+
+                    <p>
+                        Contact the appropriate local emergency service first.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="emergency-grid">
+
+                <button
+                    class="emergency-card"
+                    data-emergency="112"
+                >
+
+                    <span>🚨</span>
+
+                    <strong>
+                        Emergency
+                    </strong>
+
+                    <small>
+                        Call 112
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="emergency-card"
+                    data-emergency="100"
+                >
+
+                    <span>👮</span>
+
+                    <strong>
+                        Police
+                    </strong>
+
+                    <small>
+                        Call 100
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="emergency-card"
+                    data-emergency="108"
+                >
+
+                    <span>🚑</span>
+
+                    <strong>
+                        Ambulance
+                    </strong>
+
+                    <small>
+                        Call 108
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="emergency-card"
+                    data-emergency="101"
+                >
+
+                    <span>🚒</span>
+
+                    <strong>
+                        Fire
+                    </strong>
+
+                    <small>
+                        Call 101
+                    </small>
+
+                </button>
+
+            </div>
+
+
+            <div class="emergency-tools">
+
+                <button
+                    class="secondary-btn"
+                    id="shareLocationBtn"
+                >
+                    📍 Share My Location
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    id="nearbyHelpBtn"
+                >
+                    🏥 Find Nearby Help
+                </button>
+
+            </div>
+
+
+            <div
+                id="locationResult"
+                class="location-result hidden"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         MOBILE BOTTOM NAV
+    ========================= -->
+
+    <nav class="bottom-nav">
+
+        <button
+            data-page="home"
+            class="bottom-nav-item active"
+        >
+            <span>⌂</span>
+            <small>Home</small>
+        </button>
+
+        <button
+            data-page="explore"
+            class="bottom-nav-item"
+        >
+            <span>⌕</span>
+            <small>Explore</small>
+        </button>
+
+        <button
+            data-page="inspire"
+            class="bottom-nav-item inspire-nav"
+        >
+            <span>✦</span>
+            <small>Inspire</small>
+        </button>
+
+        <button
+            data-page="trips"
+            class="bottom-nav-item"
+        >
+            <span>🧳</span>
+            <small>Trips</small>
+        </button>
+
+        <button
+            data-page="profile"
+            class="bottom-nav-item"
+        >
+            <span>♙</span>
+            <small>Profile</small>
+        </button>
+
+    </nav>
+
+
+    <!-- =========================
+         MODAL
+    ========================= -->
+
+    <div
+        id="modalOverlay"
+        class="modal-overlay hidden"
+    >
+
+        <div class="modal">
+
+            <button
+                id="modalCloseBtn"
+                class="modal-close"
+            >
+                ×
+            </button>
+
+            <div id="modalContent"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="javascript.js"></script>
+
+</body>
+</html>
